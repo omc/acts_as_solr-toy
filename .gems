@@ -1,0 +1,1 @@
+websolr-rails --version='>= 2' --source="http://gemcutter.org"
