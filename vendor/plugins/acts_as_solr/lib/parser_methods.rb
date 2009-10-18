@@ -140,8 +140,8 @@ module ActsAsSolr #:nodoc:
       sr = SearchResults.new(results)
 
       sr.records.each do |model|
-        model.init_solr(results)
-      end
+        model.init_solr(results) if model.respond_to?(:init_solr)
+      end if sr.records
       
       sr
     end

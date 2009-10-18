@@ -22,6 +22,7 @@ class ParserMethodsTest < Test::Unit::TestCase
     context "When parsing results" do
       setup do
         @results = stub(:results)
+        @results.stubs(:highlighting).returns({})
         @results.stubs(:total_hits).returns(2)
         @results.stubs(:hits).returns([])
         @results.stubs(:max_score).returns 2.1

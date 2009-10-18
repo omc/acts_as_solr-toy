@@ -206,7 +206,10 @@ module ActsAsSolr #:nodoc:
         process_includes(configuration[:include])
       end
       
-      alias_method_chain :method_missing, :solr_magic
+      unless @already_solr_magic
+        alias_method_chain :method_missing, :solr_magic
+        @already_solr_magic = true
+      end
     end
     
     private

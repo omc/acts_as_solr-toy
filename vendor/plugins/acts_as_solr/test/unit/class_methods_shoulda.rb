@@ -66,9 +66,11 @@ class ClassMethodsTest < Test::Unit::TestCase
       
       context "when requesting ids" do
         should "return only ids" do
-          stubs(:parse_query).returns(stub(:total_hits => 1, :hits => ["score" => 0.12956427, "id" => ["User:1"]]))
-          result = multi_solr_search("name:paul", :results_format => :ids)
-          assert_equal "User:1", result.docs.first["id"]
+          loudly do
+            stubs(:parse_query).returns(stub(:total_hits => 1, :hits => ["score" => 0.12956427, "id" => ["User:1"]]))
+            result = multi_solr_search("name:paul", :results_format => :ids)
+            assert_equal "User:1", result.docs.first["id"]
+          end
         end
       end
       
