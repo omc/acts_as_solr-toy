@@ -3,8 +3,8 @@ class PostsController < ApplicationController
   # GET /posts.xml
   def index
     
-    if query = params[:q]
-      @search = Post.find_by_solr(query)
+    if params[:q].present?
+      @search = Post.find_by_solr(params[:q])
       @posts = @search.results
     else
       @posts = Post.all
