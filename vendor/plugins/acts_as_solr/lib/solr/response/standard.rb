@@ -51,6 +51,10 @@ class Solr::Response::Standard < Solr::Response::Ruby
     @data['highlighting'][id.to_s][field.to_s] rescue nil
   end
   
+  def highlighting
+    @data['highlighting']
+  end
+  
   # supports enumeration of hits
   # TODO revisit - should this iterate through *all* hits by re-requesting more?
   def each
