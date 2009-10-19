@@ -3,11 +3,7 @@ module ActsAsSolr #:nodoc:
     protected    
     
     # Method used by mostly all the ClassMethods when doing a search
-    def parse_query(query=nil, options={}, models=nil)
-      if respond_to?(:acts_as_solr_needs_reload?) && acts_as_solr_needs_reload?
-        acts_as_solr 
-      end
-      
+    def parse_query(query=nil, options={}, models=nil)      
       valid_options = [:offset, :limit, :facets, :models, :results_format, :order, :scores, :operator, :include, :lazy, :highlight]
       query_options = {}
 

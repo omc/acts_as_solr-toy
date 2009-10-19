@@ -24,6 +24,10 @@ module ActsAsSolr #:nodoc:
 
     # saves to the Solr index
     def solr_save
+      if self.class.respond_to?(:acts_as_solr_needs_reload?) && self.class.acts_as_solr_needs_reload?
+        self.class.acts_as_solr 
+      end
+      
       return true if indexing_disabled?
       if evaluate_condition(:if, self) 
         logger.debug "solr_save: #{self.class.name} : #{record_id(self)}"
