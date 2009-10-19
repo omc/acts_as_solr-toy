@@ -210,6 +210,12 @@ module ActsAsSolr #:nodoc:
         alias_method_chain :method_missing, :solr_magic
         @already_solr_magic = true
       end
+    rescue ActiveRecord::StatementInvalid  
+      @acts_as_solr_needs_reload = true
+    end
+    
+    def acts_as_solr_needs_reload?
+      @acts_as_solr_needs_reload
     end
     
     private
